@@ -5,6 +5,7 @@ import './style.css'
 
 // Import components
 import HomePage from './components/HomePage.vue'
+import CategoryLanding from './components/CategoryLanding.vue'
 
 // Create router
 const router = createRouter({
@@ -14,8 +15,16 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomePage
+    },
+    {
+      path: '/category/:category',
+      name: 'category',
+      component: CategoryLanding
     }
-  ]
+  ],
+  scrollBehavior(to, from, savedPosition) {
+    return { top: 0 }
+  }
 })
 
 const app = createApp(App)

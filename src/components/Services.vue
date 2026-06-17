@@ -51,50 +51,55 @@ export default {
           icon: '',
           description: 'Complete online store solution with product catalog, shopping cart, and checkout integration.',
           features: ['Product management', 'Payment processing', 'Order tracking', 'Customer analytics'],
-          frontClass: 'ecommerce-bg'
+          frontClass: 'ecommerce-bg',
+          categoryKey: 'ecommerce'
         },
         {
           name: 'Restaurants & Cafes',
           icon: '🍽️',
           description: 'Menu showcase, reservation system, and location finder for food businesses.',
           features: ['Digital menu', 'Online reservations', 'Order ahead', 'Table management'],
-          frontClass: 'restaurant-bg'
+          frontClass: 'restaurant-bg',
+          categoryKey: 'restaurant'
         },
         {
           name: 'Musicians & Artists',
           icon: '🎨',
           description: 'Portfolio platform with gallery, booking calendar, and fan engagement tools.',
           features: ['Media portfolio', 'Booking calendar', 'Fan community', 'Merchandise store'],
-          frontClass: 'artist-bg'
+          frontClass: 'artist-bg',
+          categoryKey: 'artist'
         },
         {
           name: 'Service Providers',
           icon: '🔧',
           description: 'Appointment scheduling, service listing, and client management system.',
           features: ['Appointment booking', 'Service catalog', 'Client profiles', 'Payment processing'],
-          frontClass: 'service-bg'
+          frontClass: 'service-bg',
+          categoryKey: 'service'
         },
         {
           name: 'Real Estate',
           icon: '🏠',
           description: 'Property listings with virtual tours, agent profiles, and inquiry management.',
           features: ['Property listings', 'Virtual tours', 'Agent directory', 'Lead management'],
-          frontClass: 'real-estate-bg'
+          frontClass: 'real-estate-bg',
+          categoryKey: 'realestate'
         },
         {
           name: 'Fitness & Wellness',
           icon: '💪',
           description: 'Class scheduling, membership management, and workout tracking platform.',
           features: ['Class schedule', 'Membership tiers', 'Trainer profiles', 'Progress tracking'],
-          frontClass: 'fitness-bg'
+          frontClass: 'fitness-bg',
+          categoryKey: 'fitness'
         }
       ]
     }
   },
   methods: {
     viewTemplate(template) {
-      console.log(`Viewing template: ${template.name}`)
-      // Add navigation logic here
+      this.$router.push(`/category/${template.categoryKey}`)
     }
   }
 }
