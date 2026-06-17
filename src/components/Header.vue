@@ -123,11 +123,12 @@ export default {
   opacity: 0;
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.95);
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
   display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: opacity 0.25s ease;
+  justify-content: flex-start;
+  align-items: stretch;
+  transition: opacity 0.3s ease;
   z-index: 1000;
 }
 
@@ -138,30 +139,44 @@ export default {
 
 .menu-panel {
   position: relative;
-  width: min(90vw, 420px);
-  padding: 40px 30px;
-  background: #a9a9a9;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 18px;
-  box-shadow: 0 40px 120px rgba(0, 0, 0, 0.45);
+  width: 400px;
+  max-width: 90vw;
+  height: 100%;
+  padding: 80px 40px 40px;
+  background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%);
+  border-right: 1px solid #333333;
+  box-shadow: 20px 0 60px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
   gap: 24px;
+  transform: translateX(-100%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.menu-overlay.open .menu-panel {
+  transform: translateX(0);
 }
 
 .close-btn {
   position: absolute;
-  top: 0;
-  right: 0;
-  width: 38px;
-  height: 38px;
-  border: none;
+  top: 20px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
   border-radius: 50%;
-  /* background: rgba(255, 255, 255, 0.08); */
+  background: transparent;
   color: #ffffff;
-  font-size: 28px;
+  font-size: 24px;
   line-height: 1;
   cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: rotate(90deg);
 }
 
 .close-btn:hover,
@@ -170,31 +185,46 @@ export default {
 }
 
 .menu-nav {
-  display: grid;
-  gap: 18px;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
 }
 
 .menu-nav a {
-  color: #000;
-  background-color: #ffffff;
-  border-left: 3px solid #000000;
+  color: #ffffff;
+  background: transparent;
+  border: none;
   text-decoration: none;
-  font-size: 24px;
-  font-weight: 700;
+  font-size: 22px;
+  font-weight: 600;
   letter-spacing: 0.5px;
-  transition: color 0.2s ease;
-  padding: 10px 20px;
-  border-radius: 10px;
+  transition: all 0.3s ease;
+  padding: 18px 24px;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.menu-nav a::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 3px;
+  background: #ffffff;
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
 }
 
 .menu-nav a:hover {
-  color: #f0f0f0;
-  background-color: rgba(0, 0, 0, 0.9);
-  border-radius: 10px;
-  border-left: 3px solid #ffffff;
-  /* border-top: 3px solid #ffffff; */
-  /* border-bottom: 3px solid #ffffff; */
+  background: rgba(255, 255, 255, 0.05);
+  padding-left: 32px;
+}
+
+.menu-nav a:hover::before {
+  transform: scaleY(1);
 }
 
 .logo {
@@ -214,22 +244,26 @@ export default {
 }
 
 @media (max-width: 768px) {
-  .header-content {
-    /* flex-direction: column;
-    gap: 5px; */
-  }
-  
   .logo {
     font-size: 20px;
   }
   
   .menu-panel {
-    width: min(95vw, 100%);
-    padding: 30px 24px;
+    width: 100%;
+    max-width: 100%;
+    padding: 60px 24px 24px;
   }
   
   .menu-nav a {
-    font-size: 20px;
+    font-size: 18px;
+    padding: 14px 20px;
+  }
+  
+  .close-btn {
+    top: 16px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
   }
 }
 </style>

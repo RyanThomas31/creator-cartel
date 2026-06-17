@@ -416,8 +416,8 @@ export default {
     font-size: 36px;
   }
   
-  .flip-card-wrapper {
+  /* .flip-card-wrapper {
     height: 350px;
-  }
+  } */
 }
 </style>
