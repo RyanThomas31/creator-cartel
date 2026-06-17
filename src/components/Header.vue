@@ -6,7 +6,7 @@
         <span></span>
         <span></span>
       </button>
-      <h1 class="logo">Creator Cartel</h1>
+      <a href="/"><h1 class="logo">Creator Cartel</h1></a>
       <!-- <p class="tagline">Premium App Templates for Every Business</p> -->
     </div>
   </header>
